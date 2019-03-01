@@ -1,0 +1,326 @@
+<style>
+	#landingTop p, .supportLandingBox {text-align: center;}
+.desktopBtn {display: inline-block;}
+.mobileBtn {display: none;}
+.supportLandingBtn {width: 33%; float: none;}
+.supportLandingBox .live {width: 33%; display: inline-block;}
+.supportLandingBox .live span  {font-size: 18px; font-weight: 700; line-height: 50px; text-align: center; text-decoration: none; color: #ed1b2d; background: #ffffff; width: 225px; height: 50px; margin: auto; display: block; border: 0 none; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px; cursor: pointer;}
+
+@media only screen and (max-width: 736px) {
+	.desktopBtn {display: none;}
+	.mobileBtn {display: block;}
+}
+</style>
+
+<div id="subLandingTop">
+	<h1 style="display: none;">${title}</h1>
+	<div class="supportLandingBox">
+		<div class="supportLandingBtn desktopBtn">
+			<div>${button_1_text}</div>
+		</div>
+		<div class="supportLandingBtn mobileBtn"><a href="${button_1_link}">${button_1_text}</a></div>
+		<div class="supportLandingBtn desktopBtn"><a href="${button_2_link}">${button_2_text}</a></div>
+
+		<t:if test="chat_type == '1'">
+			<apex:page>
+				<div id="liveagent_button_online_573410000008mNh_2" class="live" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('573410000008mNh')" /><span>Live Chat</span>
+	</div>
+	<div id="liveagent_button_offline_573410000008mNh_2" style="display: none; border: 0px none; " />
+</div>
+<script type="text/javascript">
+	if (!window._laq) {
+		window._laq = [];
+	}
+	window._laq.push(function() {
+		liveagent.showWhenOnline('573410000008mNh', document.getElementById('liveagent_button_online_573410000008mNh_2'));
+		liveagent.showWhenOffline('573410000008mNh', document.getElementById('liveagent_button_offline_573410000008mNh_2'));
+	});
+</script>
+</apex:page>
+</t:if>
+<t:else>
+	<t:if test="chat_type == '2'">
+		<apex:page>
+			<div id="liveagent_button_online_573410000008mNm_2" class="live" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('573410000008mNm')" /><span>Live Chat</span></div>
+			<div id="liveagent_button_offline_573410000008mNm_2" style="display: none; border: 0px none; " />
+			</div>
+			<script type="text/javascript">
+				if (!window._laq) {
+					window._laq = [];
+				}
+				window._laq.push(function() {
+					liveagent.showWhenOnline('573410000008mNm', document.getElementById('liveagent_button_online_573410000008mNm_2'));
+					liveagent.showWhenOffline('573410000008mNm', document.getElementById('liveagent_button_offline_573410000008mNm_2'));
+				});
+			</script>
+		</apex:page>
+	</t:if>
+	<t:else>
+		<t:if test="chat_type == '0'">
+			<apex:page>
+				<div id="liveagent_button_online_573410000008mNc_2" class="live" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('573410000008mNc')" /><span>Live Chat</span></div>
+				<div id="liveagent_button_offline_573410000008mNc_2" style="display: none; border: 0px none;" />
+				</div>
+				<script type="text/javascript">
+					if (!window._laq) {
+						window._laq = [];
+					}
+					window._laq.push(function() {
+						liveagent.showWhenOnline('573410000008mNc', document.getElementById('liveagent_button_online_573410000008mNc_2'));
+						liveagent.showWhenOffline('573410000008mNc', document.getElementById('liveagent_button_offline_573410000008mNc_2'));
+					});
+				</script>
+			</apex:page>
+		</t:if>
+	</t:else>
+</t:else>
+
+</div>
+</div>
+<div id="contentWrap">
+	<div id="aboutCols">
+		<div id="one" class="aboutBox support">
+			<h2>${box1_l_header}</h2>
+			<t:if test="box1_l_img.length > 0">
+				<t:list id="box1_l_img">
+					<img src="${path}" alt="${alt_text}">
+					</t:list>
+			</t:if>
+			<div class="bucketHeight">
+				<style media="screen">
+					.hidee{
+						display: none;
+					}
+				</style>
+				<div id="localAssocPull">
+					<img src="https://www.lung.org/images/spinner.gif" alt="" style="height: 30px;"/>
+				</div>
+
+
+					<script type="text/javascript">
+
+						var localAssocPull = function() {
+							$("#localAssocPull").html("");
+							var state = Cookies.get("state");
+							$.ajax({
+								type: "GET",
+								url: "//www.lung.org/all-items.xml?related_state=" + state,
+								success: function(xml) {
+									var counter = 0;
+									$(xml).find("localassoc_item_nofilter").each(function(i){
+										counter = counter + i;
+										var title = $(this).find("title").text();
+				            var link = $(this).find("link").text();
+										var address1 = $(this).find("address1").text();
+										var address2 = $(this).find("address2").text();
+				            var city = $(this).find("city").text();
+										var state = $(this).find("state").text();
+										var zip = $(this).find("zip").text();
+										var phone = $(this).find("phone").text();
+										var email = $(this).find("email").text();
+
+										var htmlShow = "<p class='office" + i + "'><a href='" + link + "'>" + title + "</a><br/>" + address1  + ", " + address2  + "<br/>" + city + ", " + state + " " + zip  + "<br/>" + phone  + "<br/><a href='mailto:" + email + "'>"+ email + "</a></p>";
+										var htmlHide = "<p class='hidee office" + i + "'><a href='" + link + "'>" + title + "</a><br/>" + address1  + ", " + address2  + "<br/>" + city + ", " + state + " " + zip  + "<br/>" + phone  + "<br/><a href='mailto:" + email + "'>"+ email + "</a></p>";
+										console.log(i);
+										console.log(htmlShow);
+										console.log(htmlHide);
+
+										if (i < 3) {
+											console.log("it's", i, "so showing it.");
+											$("#localAssocPull").append(htmlShow);
+										} else {
+											console.log("it's", i, "so hiding it.");
+											$("#localAssocPull").append(htmlHide);
+										}
+
+									});
+
+									if (counter > 3) {
+										$("#localAssocPull").append("<button id='showOffice' class='button blue' onclick='$(\".hidee\").removeClass(\"hidee\"); $(\"#showOffice\").hide();'>Show more</button><br/>");
+									}
+								},
+								error: function() {
+									console.log("Local Association Pull failure. See AJAX call in contenttype:Landing page - Support & Community.");
+								}
+							});
+						};
+
+						$(document).ready(function() {
+							localAssocPull();
+						})
+
+						$("#stateSelectList").on("change", function() {
+							localAssocPull();
+						});
+						$("[name='searchZip']").on("submit", function() {
+							setTimeout(localAssocPull, 500);
+						});
+					</script>
+					<!-- <div style="display: inline;" class="templateComponent" id="templatelist-652529375"></div> -->
+					<!-- <div id="templatelist-916035376" class="templateComponent" style="display: inline;"></div> -->
+
+					<a class="localSupportLink" href="http://www.lung.org/about-us/contact-us.html">Contact us&nbsp;&raquo;</a>
+				</div>
+			</div>
+			<div id="two" class="aboutBox support">
+				<h2>${box1_r_header}</h2>
+				<t:if test="box1_r_img.length > 0">
+					<t:list id="box1_r_img">
+						<img src="${path}" alt="${alt_text}">
+					</t:list>
+				</t:if>
+				<div class="bucketHeight">${box1_r_copy}
+					<div style="display: inline;" class="templateComponent" id="templatelist-652530954"></div>
+					<a href="https://www.lung.org/support-and-community/better-breathers-club/">Learn more about the Better Breathers Club&nbsp;&raquo;</a>
+				</div>
+			</div>
+		</div>
+		<div id="aboutCols">
+			<div id="three" class="aboutBox support two">
+				<h2>${box2_l_header}</h2>
+				<t:if test="box2_l_img.length > 0">
+					<t:list id="box2_l_img">
+						<img src="${path}" alt="${alt_text}">
+					</t:list>
+				</t:if>
+				<div class="bucketHeight">${box2_l_copy}</div>
+			</div>
+			<div id="four" class="aboutBox support two">
+				<h2>${box2_r_header}</h2>
+				<t:if test="box2_r_img.length > 0">
+					<t:list id="box2_r_img">
+						<img src="${path}" alt="${alt_text}">
+					</t:list>
+				</t:if>
+				<div class="bucketHeight">${box2_r_copy}</div>
+			</div>
+		</div>
+		<div id="aboutCols">
+			<div id="five" class="aboutBox support three">
+				<h2>${box3_l_header}</h2>
+				<t:if test="box3_l_img.length > 0">
+					<t:list id="box3_l_img">
+						<img src="${path}" alt="${alt_text}">
+					</t:list>
+				</t:if>
+				<div class="bucketHeight">${box3_l_copy}</div>
+			</div>
+
+			<div id="six" class="aboutBox support three">
+				<h2>${box3_r_header}</h2>
+				<t:if test="box3_r_img.length > 0">
+					<t:list id="box3_r_img">
+						<img src="${path}" alt="${alt_text}">
+					</t:list>
+				</t:if>
+				<div class="bucketHeight">${box3_r_copy}
+					<!--<div id="templatelist-754744460" class="templateComponent" style="display: inline;"></div>-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="aboutCols">
+		<div id="seven" class="aboutBox support three">
+			<h2>${box4_l_header}</h2>
+			<t:if test="box4_l_img.length > 0">
+				<t:list id="box4_l_img">
+					<img src="${path}" alt="${alt_text}">
+				</t:list>
+			</t:if>
+			<div class="bucketHeight">${box4_l_copy}</div>
+		</div>
+
+		<div id="eight" class="aboutBox support three">
+			<h2>${box4_r_header}</h2>
+			<t:if test="box4_r_img.length > 0">
+				<t:list id="box4_r_img">
+					<img src="${path}" alt="${alt_text}">
+				</t:list>
+			</t:if>
+			<div class="bucketHeight">${box4_r_copy}
+				<!--<div id="templatelist-754744460" class="templateComponent" style="display: inline;"></div>-->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	<!--
+	var is_local = "true";
+
+	function returnContent(key) {
+		if (key == "" || key == null) {
+			alert('No location to load' + key);
+		} else {
+			console.log('The key is ' + key);
+			var randomnumber = Math.floor(Math.random() * 999999);
+			$.ajax({
+				type: "GET",
+				url: "/all-items-home-landing.xml?related_state=" + key + "&t=" + randomnumber,
+				dataType: "xml",
+				success: function(xml) {
+					var listings_html1 = "";
+					var listings_html2 = "";
+					var listings_html3 = "";
+					$(xml).find('event_item').each(function(i) {
+						var title = $(this).find('title').text();
+						var url = $(this).find('link').text();
+						var date = $(this).find('date').text();
+
+						var cat = $(this).find('cat').text();
+						if (cat == 'better-breathers-club') {
+							var html = '<li><a href="' + url + '">' + title + '</a><div class="aboutListSub"> ' + date + '</div></li>';
+							listings_html1 += html;
+							return i < 2;
+						} else {
+							return;
+						}
+					});
+					$(xml).find('localsupport_item').each(function(i) {
+						var title = $(this).find('title').text();
+						var url = $(this).find('link').text();
+						var address1 = $(this).find('address1').text();
+						var address2 = $(this).find('address2').text();
+						var city = $(this).find('city').text();
+						var state = $(this).find('state').text();
+						var zip = $(this).find('zip').text();
+						var phone = $(this).find('phone').text();
+						var email = $(this).find('email').text();
+						var html = '<li class="expander"><a>' + title + '</a><div class="content">' + address1 + ', ' + address2 + '<br>' + city + ', ' + state + ' ' + zip + '<br>T: ' + phone + '<br>E: <a href="' + email + '">' + email + '</a></div></li>';
+						listings_html2 += html;
+						return i < 2;
+					});
+					$(xml).find('event_item').each(function(i) {
+						var title = $(this).find('title').text();
+						var url = $(this).find('link').text();
+						var date = $(this).find('date').text();
+
+						var cat = $(this).find('cat').text();
+						if (cat == 'pulmonary-rehab') {
+							var html = '<li><a href="' + url + '">' + title + '</a><div class="aboutListSub"> ' + date + '</div></li>';
+							listings_html3 += html;
+							return i < 2;
+						} else {
+							return;
+						}
+					});
+					document.getElementById('breather_xml').innerHTML = listings_html1;
+					document.getElementById('localsupport_xml').innerHTML = listings_html2;
+					document.getElementById('pulmonary_xml').innerHTML = listings_html3;
+					jQuery(function() {
+						jQuery('.expander').simpleexpand({
+							'defaultSearchMode': 'relative'
+						});
+						jQuery('.expander:first-child').click();
+					});
+				},
+				error: function() {
+					console.log("An error occurred while processing XML file.");
+				}
+			});
+		}
+	}
+	-->
+</script>
