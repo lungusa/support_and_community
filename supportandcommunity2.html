@@ -121,15 +121,15 @@
 
 										var htmlShow = "<p class='office" + i + "'><a href='" + link + "'>" + title + "</a><br/>" + address1  + ", " + address2  + "<br/>" + city + ", " + state + " " + zip  + "<br/>" + phone  + "<br/><a href='mailto:" + email + "'>"+ email + "</a></p>";
 										var htmlHide = "<p class='hidee office" + i + "'><a href='" + link + "'>" + title + "</a><br/>" + address1  + ", " + address2  + "<br/>" + city + ", " + state + " " + zip  + "<br/>" + phone  + "<br/><a href='mailto:" + email + "'>"+ email + "</a></p>";
-										console.log(i);
-										console.log(htmlShow);
-										console.log(htmlHide);
+										// console.log(i);
+										// console.log(htmlShow);
+										// console.log(htmlHide);
 
 										if (i < 3) {
-											console.log("it's", i, "so showing it.");
+											// console.log("it's", i, "so showing it.");
 											$("#localAssocPull").append(htmlShow);
 										} else {
-											console.log("it's", i, "so hiding it.");
+											// console.log("it's", i, "so hiding it.");
 											$("#localAssocPull").append(htmlHide);
 										}
 
@@ -139,8 +139,9 @@
 										$("#localAssocPull").append("<button id='showOffice' class='button blue' onclick='$(\".hidee\").removeClass(\"hidee\"); $(\"#showOffice\").hide();'>Show more</button><br/>");
 									}
 								},
-								error: function() {
-									console.log("Local Association Pull failure. See AJAX call in contenttype:Landing page - Support & Community.");
+								error: function(e) {
+									console.warn("Local Association Pull failure. See AJAX call in contenttype:Landing page - Support & Community.");
+									throw e;
 								}
 							});
 						};
